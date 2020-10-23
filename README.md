@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## First start back-end app
 ### `git clone https://github.com/alirezababae/totp.git `
 ### `cd totp`
-### `yarn start`
+### `npm install or yarn install`
+### `npm install or yarn start`
 ## Available Scripts
 
 In the project directory, you can run:
