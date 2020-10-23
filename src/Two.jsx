@@ -1,5 +1,5 @@
 import React from "react";
-import { Steps, Button, ButtonGroup, Panel, Notification } from "rsuite";
+import { Steps, Button, Badge, Panel, Notification } from "rsuite";
 import Axios from "axios";
 const App = () => {
 	const [step, setStep] = React.useState(0);
@@ -28,16 +28,11 @@ const App = () => {
 		Axios.post("http://localhost:3001/generate", {
 			secret: localStorage.getItem("none"),
 		}).then((res) => {
-			console.log("====================================");
-			console.log(res.data.remaining);
-			console.log(res);
-
 			setCounter(counter + res.data.remaining);
 			Notification.open({
-				title: "Notify",
+				title: "Code",
 				description: <p>you code {res.data.token}</p>,
 			});
-			console.log("====================================");
 		});
 	};
 
@@ -50,10 +45,9 @@ const App = () => {
 			return () => clearInterval(timer);
 		}, [counter]);
 		return (
-			<div className="App">
-				{" "}
-				<div>Countdown: {counter}</div>{" "}
-			</div>
+			<Badge content={counter}>
+				<Button>Second</Button>
+			</Badge>
 		);
 	}
 
@@ -69,31 +63,31 @@ const App = () => {
 		}).then((res) => {
 			console.log(res);
 			if (res.data.valid === true) {
-				//  onchange(step + 2)
-				alert("nice");
+				onChange(step + 1);
 			} else {
-				alert("lol");
+				alert("false code ):");
 			}
 		});
 	};
 
 	//
 
-	const Test = () => {
+	const Stepeds = () => {
 		switch (step) {
 			case 0:
 				return (
 					<div>
-						<Button onClick={Handlsers}> req </Button>
+						<Button appearance="ghost" onClick={Handlsers}>
+							get request code
+						</Button>
 					</div>
 				);
 			case 1:
 				return (
 					<div>
-						{" "}
-						is {step} no
-						<Button onClick={Genreted}>send req</Button>
-						<h3>{counter} wow</h3> <hr />
+						<Button appearance="ghost" onClick={Genreted}>
+							Get code
+						</Button>
 						<Timers />
 						<form>
 							<label>code</label>
@@ -104,49 +98,32 @@ const App = () => {
 								placeholder="example 745456"
 							/>
 
-							<button type="submit" onClick={handleSubmit}>
-								alert
-							</button>
+							<Button color="green" type="submit" onClick={handleSubmit}>
+								Submit
+							</Button>
 						</form>
 					</div>
 				);
 
 			case 2:
-				return <div> is {step} </div>;
-
-			case 3:
-				return <div> is {step} </div>;
+				return <div>hapyy you succsus!</div>;
 
 			default:
 				return <div>no</div>;
 		}
 	};
-	const onNext = () => onChange(step + 1);
-	const onPrevious = () => onChange(step - 1);
 
 	return (
 		<div>
 			<Steps current={step}>
-				<Steps.Item title="Finished" description="Description">
-					<h1>lol</h1>
-				</Steps.Item>
-				<Steps.Item title="In Progress" description="Description" />
-				<Steps.Item title="Waiting" description="Description" />
-				<Steps.Item title="Waiting" description="Description" />
+				<Steps.Item title="Finished" description="is her" />
+				<Steps.Item title="In Progress" description="is her" />
+				<Steps.Item title="Waiting" description="is her" />
 			</Steps>
 			<hr />
-			<Panel header={`Step: ${step + 1}`}>
-				<Test />
+			<Panel header={`Part: ${step + 1}`}>
+				<Stepeds />
 			</Panel>
-			<hr />
-			<ButtonGroup>
-				<Button onClick={onPrevious} disabled={step === 0}>
-					Previous
-				</Button>
-				<Button onClick={onNext} disabled={step === 3}>
-					Next
-				</Button>
-			</ButtonGroup>
 		</div>
 	);
 };

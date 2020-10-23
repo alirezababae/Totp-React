@@ -4,11 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-yarn.lock
-App.js
-
 # testing
 /coverage
+
+App.jsx
 
 # production
 /build
