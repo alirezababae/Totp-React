@@ -118,7 +118,7 @@ const App = () => {
 			<Steps current={step}>
 				<Steps.Item title="Finished" description="is her" />
 				<Steps.Item title="In Progress" description="is her" />
-				<Steps.Item title="Waiting" description="is her" />
+				<Steps.Item title="Waiting" description="is done" />
 			</Steps>
 			<hr />
 			<Panel header={`Part: ${step + 1}`}>
