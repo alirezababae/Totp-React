@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### `npm install or yarn start`
 ## Available Scripts
 
-In the project directory, you can run:
+## In the project directory, you can run:
 
 install packege dependence
 
